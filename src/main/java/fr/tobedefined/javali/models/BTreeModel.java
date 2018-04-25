@@ -1,6 +1,6 @@
 package fr.tobedefined.javali.models;
 
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 import fr.tobedefined.javali.models.common.ErrorRange;
 import org.apache.directory.mavibot.btree.BTree;
 import org.apache.directory.mavibot.btree.BTreeFactory;

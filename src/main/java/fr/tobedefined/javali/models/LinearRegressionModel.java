@@ -1,6 +1,6 @@
 package fr.tobedefined.javali.models;
 
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 import fr.tobedefined.javali.models.common.ErrorRange;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 

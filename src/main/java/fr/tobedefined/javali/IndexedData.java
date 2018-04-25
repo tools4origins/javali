@@ -1,7 +1,7 @@
 package fr.tobedefined.javali;
 
 import fr.tobedefined.javali.models.common.ErrorRange;
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 
 public class IndexedData {
     private Model model;

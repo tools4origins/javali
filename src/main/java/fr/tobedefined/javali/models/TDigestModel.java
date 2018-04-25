@@ -1,7 +1,7 @@
 package fr.tobedefined.javali.models;
 
 import com.tdunning.math.stats.TDigest;
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 import fr.tobedefined.javali.models.common.ErrorRange;
 
 import java.util.stream.IntStream;

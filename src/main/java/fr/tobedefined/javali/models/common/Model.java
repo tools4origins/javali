@@ -1,6 +1,4 @@
-package fr.tobedefined.javali.models.api;
-
-import fr.tobedefined.javali.models.common.ErrorRange;
+package fr.tobedefined.javali.models.common;
 
 public interface Model {
     default String getName() {

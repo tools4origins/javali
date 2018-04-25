@@ -4,7 +4,7 @@ import fr.tobedefined.javali.models.BTreeModel;
 import fr.tobedefined.javali.models.HDRHistogramModel;
 import fr.tobedefined.javali.models.LinearRegressionModel;
 import fr.tobedefined.javali.models.TDigestModel;
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

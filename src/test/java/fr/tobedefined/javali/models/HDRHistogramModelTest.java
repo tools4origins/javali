@@ -1,6 +1,6 @@
 package fr.tobedefined.javali.models;
 
-import fr.tobedefined.javali.models.api.Model;
+import fr.tobedefined.javali.models.common.Model;
 import fr.tobedefined.javali.models.api.ModelContract;
 
 class HDRHistogramModelTest implements ModelContract {

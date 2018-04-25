@@ -1,6 +1,7 @@
 package fr.tobedefined.javali.models.api;
 
 import fr.tobedefined.javali.IndexedData;
+import fr.tobedefined.javali.models.common.Model;
 import org.junit.jupiter.api.Test;
 
 import static fr.tobedefined.javali.data.datasets.Y_EQUALS_X2;
