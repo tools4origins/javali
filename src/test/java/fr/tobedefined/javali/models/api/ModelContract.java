@@ -8,12 +8,12 @@ import static fr.tobedefined.javali.data.datasets.Y_EQUALS_X2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public interface ModelContract {
-    double[] DATASET = Y_EQUALS_X2;
+    long[] DATASET = Y_EQUALS_X2;
     int DATASET_SIZE = DATASET.length;
     int FIRST_POSITION = 0;
     int LAST_POSITION = DATASET_SIZE - 1;
-    double MIN_VALUE = DATASET[FIRST_POSITION];
-    double MAX_VALUE = DATASET[LAST_POSITION];
+    long MIN_VALUE = DATASET[FIRST_POSITION];
+    long MAX_VALUE = DATASET[LAST_POSITION];
 
     Model retrieveModel();
 

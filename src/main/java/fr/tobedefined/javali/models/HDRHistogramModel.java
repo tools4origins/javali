@@ -9,19 +9,16 @@ import java.util.stream.IntStream;
 public class HDRHistogramModel implements Model {
     private Histogram histogram;
 
-    private double[] X;
-    private double[] y;
+    private long[] X;
+    private long[] y;
     private ErrorRange errorRange;
 
-    public void fit(double[] X) {
+    public void fit(long[] X) {
         this.X = X;
-        this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
+        this.y = IntStream.range(0, X.length).mapToLong(x -> x).toArray();
 
-        Double maxValue = X[X.length - 1];
-        this.histogram = new Histogram(
-                maxValue.longValue(),
-                2
-        );
+        long maxValue = X[X.length - 1];
+        this.histogram = new Histogram(maxValue,2);
         this.fit();
         this.updateMinMaxError();
     }
@@ -31,12 +28,12 @@ public class HDRHistogramModel implements Model {
             throw new RuntimeException("Trying to fit a model without data");
         }
 
-        for (Double x :this.X) {
-            histogram.recordValue(x.longValue());
+        for (long x :this.X) {
+            histogram.recordValue(x);
         }
     }
 
-    public double predict(double x) {
+    public double predict(long x) {
         return histogram.getPercentileAtOrBelowValue((long) x) * histogram.getTotalCount() / 100;
     }
 

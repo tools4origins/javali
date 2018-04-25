@@ -9,14 +9,14 @@ import java.util.stream.IntStream;
 public class TDigestModel implements Model {
     private TDigest tDigest;
 
-    private double[] X;
-    private double[] y;
+    private long[] X;
+    private long[] y;
     private ErrorRange errorRange;
 
-    public void fit(double[] X) {
+    public void fit(long[] X) {
         this.tDigest = TDigest.createAvlTreeDigest(10);
         this.X = X;
-        this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
+        this.y = IntStream.range(0, X.length).mapToLong(x -> x).toArray();
 
         this.fit();
         this.updateMinMaxError();
@@ -34,7 +34,7 @@ public class TDigestModel implements Model {
         tDigest.compress();
     }
 
-    public double predict(double x) {
+    public double predict(long x) {
         return tDigest.cdf(x) * tDigest.size();
     }
 

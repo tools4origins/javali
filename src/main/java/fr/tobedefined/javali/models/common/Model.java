@@ -4,7 +4,7 @@ public interface Model {
     default String getName() {
         return this.getClass().getName();
     }
-    void fit(double[] X);
-    double predict(double x);
+    void fit(long[] X);
+    double predict(long x);
     ErrorRange getErrorRange();
 }

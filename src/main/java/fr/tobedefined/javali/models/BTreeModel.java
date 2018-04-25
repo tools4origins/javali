@@ -1,14 +1,13 @@
 package fr.tobedefined.javali.models;
 
-import fr.tobedefined.javali.models.common.Model;
 import fr.tobedefined.javali.models.common.ErrorRange;
+import fr.tobedefined.javali.models.common.Model;
 import org.apache.directory.mavibot.btree.BTree;
 import org.apache.directory.mavibot.btree.BTreeFactory;
 import org.apache.directory.mavibot.btree.exception.KeyNotFoundException;
 import org.apache.directory.mavibot.btree.serializer.LongSerializer;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class BTreeModel implements Model {
@@ -18,13 +17,13 @@ public class BTreeModel implements Model {
     private long[] y;
     private ErrorRange errorRange;
 
-    public void fit(double[] X) {
+    public void fit(long[] X) {
         this.bTree = BTreeFactory.createInMemoryBTree(
                 "bTreeModel",
                 LongSerializer.INSTANCE,
                 LongSerializer.INSTANCE
         );
-        this.X = Arrays.stream(X).mapToLong(x -> (long) x).toArray();
+        this.X = X;
         this.y = IntStream.range(0, X.length).mapToLong(x -> x).toArray();
         this.fit();
         this.updateMinMaxError();
@@ -45,11 +44,7 @@ public class BTreeModel implements Model {
                 });
     }
 
-    public double predict(double x) {
-        return predict((long) x);
-    }
-
-    private double predict(long x) {
+    public double predict(long x) {
         try {
             return bTree.get(x);
         } catch (KeyNotFoundException e) {

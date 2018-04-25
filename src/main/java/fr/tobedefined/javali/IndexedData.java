@@ -5,23 +5,23 @@ import fr.tobedefined.javali.models.common.Model;
 
 public class IndexedData {
     private Model model;
-    private double[] data;
+    private long[] data;
 
     public IndexedData(Model model) {
         this.model = model;
     }
 
-    public IndexedData(Model model, double[] data) {
+    public IndexedData(Model model, long[] data) {
         this.model = model;
         this.addData(data);
     }
 
-    public void addData(double[] data) {
+    public void addData(long[] data) {
         this.data = data;
         this.model.fit(data);
     }
 
-    public int indexOf(double x) {
+    public int indexOf(long x) {
         double position = this.model.predict(x);
         ErrorRange errorRange = this.model.getErrorRange();
         int minPredictedOffset = (int) (position + errorRange.getLeftError());

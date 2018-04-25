@@ -9,13 +9,13 @@ import java.util.stream.IntStream;
 public class LinearRegressionModel implements Model {
     private SimpleRegression regression;
 
-    private double[] X;
-    private double[] y;
+    private long[] X;
+    private long[] y;
     private ErrorRange errorRange;
 
-    public void fit(double[] X) {
+    public void fit(long[] X) {
         this.X = X;
-        this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
+        this.y = IntStream.range(0, X.length).mapToLong(x -> x).toArray();
 
         this.fit();
         this.updateMinMaxError();
@@ -33,7 +33,7 @@ public class LinearRegressionModel implements Model {
         }
     }
 
-    public double predict(double x) {
+    public double predict(long x) {
         return regression.predict(x);
     }
 

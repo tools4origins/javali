@@ -16,7 +16,7 @@ import static fr.tobedefined.javali.data.datasets.*;
 
 public class Main {
     public static void main(String[] args) {
-        Map<String, double[]> datasets = new HashMap<>();
+        Map<String, long[]> datasets = new HashMap<>();
         datasets.put("y=x", Y_EQUALS_X);
         datasets.put("y=x^2", Y_EQUALS_X2);
         datasets.put("y=x^3", Y_EQUALS_X3);

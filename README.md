@@ -9,3 +9,5 @@ Tim Kraska, Alex Beutel, Ed H. Chi, Jeffrey Dean and Neoklis Polyzotis propose i
 model to overfit this CDF and then use the model as an index. 
 
 This repository contains some experiments in Java with CDF, indexes amd learned index structures.
+
+Only trying on ordered list of long in order to keep it simple.
