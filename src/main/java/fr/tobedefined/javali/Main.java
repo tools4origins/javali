@@ -1,11 +1,15 @@
 package fr.tobedefined.javali;
 
+import fr.tobedefined.javali.models.HDRHistogramModel;
 import fr.tobedefined.javali.models.LinearRegressionModel;
 import fr.tobedefined.javali.models.TDigestModel;
 import fr.tobedefined.javali.models.api.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import static fr.tobedefined.javali.data.datasets.*;
 
@@ -16,17 +20,22 @@ public class Main {
         datasets.put("y=x^2", Y_EQUALS_X2);
         datasets.put("y=x^3", Y_EQUALS_X3);
 
-        Model[] models = new Model[]{
-                new LinearRegressionModel(),
-                new TDigestModel()
-        };
+        List<Supplier<Model>> models = new ArrayList<>();
+        models.add(LinearRegressionModel::new);
+        models.add(TDigestModel::new);
+        models.add(HDRHistogramModel::new);
 
         datasets.forEach((datasetName, dataset) -> {
-            System.out.println("Dataset: " + datasetName);
-            for (Model model : models) {
+            System.out.printf("Dataset: %s%n", datasetName);
+            for (Supplier<Model> modelGenerator : models) {
+                Model model = modelGenerator.get();
                 IndexedData indexedData = new IndexedData(model);
-                indexedData.addData(Y_EQUALS_X);
-                System.out.println("Model: " + model.getName() + " - Error:" + indexedData.getErrorRangeRelativeSize());
+                indexedData.addData(dataset);
+                System.out.printf(
+                        "Model: %s - Error:%s%n",
+                        model.getName(),
+                        indexedData.getErrorRangeRelativeSize()
+                );
             }
         });
         System.out.println("Finished");
