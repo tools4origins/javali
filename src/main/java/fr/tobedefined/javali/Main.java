@@ -31,13 +31,10 @@ public class Main {
             System.out.printf("Dataset: %s%n", datasetName);
             for (Supplier<Model> modelGenerator : models) {
                 Model model = modelGenerator.get();
+                System.out.printf("Model: %s - ", model.getName());
                 IndexedData indexedData = new IndexedData(model);
                 indexedData.addData(dataset);
-                System.out.printf(
-                        "Model: %s - Error:%s%n",
-                        model.getName(),
-                        indexedData.getErrorRangeRelativeSize()
-                );
+                System.out.printf("Error: %s%n", indexedData.getErrorRangeRelativeSize());
             }
         });
         System.out.println("Finished");
