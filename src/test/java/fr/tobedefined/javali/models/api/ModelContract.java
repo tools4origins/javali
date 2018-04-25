@@ -3,37 +3,51 @@ package fr.tobedefined.javali.models.api;
 import fr.tobedefined.javali.IndexedData;
 import org.junit.jupiter.api.Test;
 
-import static fr.tobedefined.javali.data.datasets.Y_EQUALS_X;
+import static fr.tobedefined.javali.data.datasets.Y_EQUALS_X2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public interface ModelContract {
-    double[] DATASET = Y_EQUALS_X;
-    int DATASET_SIZE = Y_EQUALS_X.length;
+    double[] DATASET = Y_EQUALS_X2;
+    int DATASET_SIZE = DATASET.length;
+    int FIRST_POSITION = 0;
+    int LAST_POSITION = DATASET_SIZE - 1;
+    double MIN_VALUE = DATASET[FIRST_POSITION];
+    double MAX_VALUE = DATASET[LAST_POSITION];
 
     Model retrieveModel();
 
     default IndexedData retrieveIndexedData() {
-        return new IndexedData(retrieveModel(), Y_EQUALS_X);
+        return new IndexedData(retrieveModel(), DATASET);
     }
 
     @Test
-    default void modelShouldWorkWithSmallValues() {
-        assertEquals(0, retrieveIndexedData().indexOf(Y_EQUALS_X[0]));
+    default void modelShouldPermitPositionRetrievalOfTheFirstValue() {
+        assertEquals(FIRST_POSITION, retrieveIndexedData().indexOf(MIN_VALUE));
     }
 
     @Test
-    default void modelShouldWorkWithLargeValues() {
-        assertEquals(DATASET_SIZE -1, retrieveIndexedData().indexOf(Y_EQUALS_X[DATASET_SIZE -1]));
+    default void modelShouldPermitPositionRetrievalOfSmallValues() {
+        assertEquals(5, retrieveIndexedData().indexOf(DATASET[5]));
     }
 
     @Test
-    default void modelShouldNotWorkWithTooSmallValues() {
-        assertEquals(-1, retrieveIndexedData().indexOf(DATASET[0]-1));
+    default void modelShouldPermitPositionRetrievalOfLargeValues() {
+        assertEquals(DATASET_SIZE - 5, retrieveIndexedData().indexOf(DATASET[DATASET_SIZE - 5]));
     }
 
     @Test
-    default void modelShouldNotWorkWithTooBigValues() {
-        assertEquals(-1, retrieveIndexedData().indexOf(DATASET[DATASET_SIZE-1] + 1));
+    default void modelShouldPermitPositionRetrievalOfTheLastValue() {
+        assertEquals(LAST_POSITION, retrieveIndexedData().indexOf(MAX_VALUE));
+    }
+
+    @Test
+    default void modelShouldReturnMinus1ForTooSmallValues() {
+        assertEquals(-1, retrieveIndexedData().indexOf(MIN_VALUE - 1));
+    }
+
+    @Test
+    default void modelShouldReturnMinus1ForTooBigValues() {
+        assertEquals(-1, retrieveIndexedData().indexOf(MAX_VALUE + 1));
     }
 
 }
