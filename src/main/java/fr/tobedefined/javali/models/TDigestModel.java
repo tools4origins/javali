@@ -13,11 +13,8 @@ public class TDigestModel implements Model {
     private double[] y;
     private ErrorRange errorRange;
 
-    public TDigestModel() {
-        this.tDigest = TDigest.createAvlTreeDigest(10);
-    }
-
     public void fit(double[] X) {
+        this.tDigest = TDigest.createAvlTreeDigest(10);
         this.X = X;
         this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
 

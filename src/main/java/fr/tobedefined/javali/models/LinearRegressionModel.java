@@ -13,10 +13,6 @@ public class LinearRegressionModel implements Model {
     private double[] y;
     private ErrorRange errorRange;
 
-    public LinearRegressionModel() {
-        this.regression = new SimpleRegression();
-    }
-
     public void fit(double[] X) {
         this.X = X;
         this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
@@ -26,6 +22,8 @@ public class LinearRegressionModel implements Model {
     }
 
     private void fit() {
+        this.regression = new SimpleRegression();
+
         if (X == null) {
             throw new RuntimeException("Trying to fit a model without data");
         }

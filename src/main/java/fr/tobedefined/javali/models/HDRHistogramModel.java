@@ -13,8 +13,6 @@ public class HDRHistogramModel implements Model {
     private double[] y;
     private ErrorRange errorRange;
 
-    public HDRHistogramModel() {}
-
     public void fit(double[] X) {
         this.X = X;
         this.y = IntStream.range(0, X.length).mapToDouble(x -> x).toArray();
