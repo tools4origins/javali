@@ -1,5 +1,6 @@
 package fr.tobedefined.javali;
 
+import fr.tobedefined.javali.models.BTreeModel;
 import fr.tobedefined.javali.models.HDRHistogramModel;
 import fr.tobedefined.javali.models.LinearRegressionModel;
 import fr.tobedefined.javali.models.TDigestModel;
@@ -21,6 +22,7 @@ public class Main {
         datasets.put("y=x^3", Y_EQUALS_X3);
 
         List<Supplier<Model>> models = new ArrayList<>();
+        models.add(BTreeModel::new);
         models.add(LinearRegressionModel::new);
         models.add(TDigestModel::new);
         models.add(HDRHistogramModel::new);
