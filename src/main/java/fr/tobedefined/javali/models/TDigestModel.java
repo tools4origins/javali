@@ -14,7 +14,7 @@ public class TDigestModel implements Model {
     private ErrorRange errorRange;
 
     public TDigestModel() {
-        this.tDigest = TDigest.createAvlTreeDigest(100);
+        this.tDigest = TDigest.createAvlTreeDigest(10);
     }
 
     public void fit(double[] X) {
