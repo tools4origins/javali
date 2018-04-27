@@ -1,9 +1,6 @@
 package fr.tobedefined.javali;
 
-import fr.tobedefined.javali.models.BTreeModel;
-import fr.tobedefined.javali.models.HDRHistogramModel;
-import fr.tobedefined.javali.models.LinearRegressionModel;
-import fr.tobedefined.javali.models.TDigestModel;
+import fr.tobedefined.javali.models.*;
 import fr.tobedefined.javali.models.common.Model;
 
 import java.util.ArrayList;
@@ -26,6 +23,7 @@ public class Main {
         models.add(LinearRegressionModel::new);
         models.add(TDigestModel::new);
         models.add(HDRHistogramModel::new);
+        models.add(NeuralNetworkModel::new);
 
         datasets.forEach((datasetName, dataset) -> {
             System.out.printf("Dataset: %s%n", datasetName);

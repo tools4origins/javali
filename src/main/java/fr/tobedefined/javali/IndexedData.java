@@ -22,10 +22,10 @@ public class IndexedData {
     }
 
     public int indexOf(long x) {
-        double position = this.model.predict(x);
+        double prediction = this.model.predict(x);
         ErrorRange errorRange = this.model.getErrorRange();
-        int minPredictedOffset = (int) (position + errorRange.getLeftError());
-        int maxPredictedOffset = (int) (position + errorRange.getRightError() + 1);
+        int minPredictedOffset = (int) (prediction + errorRange.getLeftError());
+        int maxPredictedOffset = (int) (prediction + errorRange.getRightError() + 1);
         int minOffset = Math.max(0, minPredictedOffset);
         int maxOffset = Math.min(data.length - 1, maxPredictedOffset);
         for (int i = minOffset; i <= maxOffset; i++) {
